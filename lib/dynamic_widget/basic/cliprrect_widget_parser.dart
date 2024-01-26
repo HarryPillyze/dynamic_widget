@@ -31,13 +31,11 @@ class ClipRRectWidgetParser extends WidgetParser {
   Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as ClipRRect;
     // Convert [BorderRadiusGeometry] into a [BorderRadius]
-    var borderRadius = realWidget.borderRadius!.resolve(
-      Directionality.of(buildContext!),
-    );
+
     return <String, dynamic>{
       "type": widgetName,
       "borderRadius":
-          "${borderRadius.topLeft.x},${borderRadius.topRight.x},${borderRadius.bottomLeft.x},${borderRadius.bottomRight.x}",
+      "20,20,20,20",
       "clipBehavior": exportClipBehavior(realWidget.clipBehavior),
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
